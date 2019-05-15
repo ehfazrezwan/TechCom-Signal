@@ -95,7 +95,10 @@
         android:supportsRtl="true"
         android:theme="@style/TextSecure.LightTheme"
         tools:replace="android:allowBackup">
-        <activity android:name=".tabbed.TabbedContainer">
+        <activity
+            android:name=".tabbed.TabbedContainer"
+            android:theme="@style/TextSecure.LightNoActionBar"
+            >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
