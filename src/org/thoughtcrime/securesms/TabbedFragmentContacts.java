@@ -4,6 +4,7 @@ package org.thoughtcrime.securesms;
 import android.content.Context;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.AppCompatActivity;
@@ -68,13 +69,18 @@ public class TabbedFragmentContacts extends Fragment
         System.out.println("Toolbar: " + this.toolbar);
 
         initializeToolbar();
-        initializeResources();
-        initializeSearch();
 
         return view;
     }
 
+    @Override
+    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
+        super.onActivityCreated(savedInstanceState);
 
+        initializeResources();
+        initializeSearch();
+
+    }
 
     @Override
     public void onResume() {
@@ -103,6 +109,7 @@ public class TabbedFragmentContacts extends Fragment
     private void initializeResources() {
         contactsFragment = (ContactSelectionListFragment) getChildFragmentManager().findFragmentById(R.id.contact_selection_list_fragment);
         contactsFragment.setOnContactSelectedListener(this);
+        System.out.println("Init resources " + contactsFragment);
         contactsFragment.setOnRefreshListener(this);
     }
 
